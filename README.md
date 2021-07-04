@@ -79,7 +79,7 @@ hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-f
 ## Size Comparisons
 
 ```sh
-hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/ # FullDataCsv filesize
+hadoop fs -du -s -h /user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv # FullDataCsv filesize
 hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text # text filesize
 hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc # orc filesize
 ```
