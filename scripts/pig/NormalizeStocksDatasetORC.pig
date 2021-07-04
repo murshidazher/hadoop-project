@@ -1,9 +1,8 @@
 REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
-REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
 
 -- NormalizeStocksDataset to a single dataset with the required columns
-collection_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv/*' 
-                USING PigStorage(',', '-tagFile') 
+collection_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv/*'
+                USING PigStorage(',', '-tagFile')
                 AS (filepath:chararray, timestamp: chararray, open:float, high:float, low:float, close:float, volume: int);
 
 collection_data =   FILTER collection_data BY $2 IS NOT NULl;
@@ -28,14 +27,14 @@ stocks =        FOREACH per_day_stock GENERATE
 master_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/master.csv'
                 USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'NO_MULTILINE', 'UNIX', 'SKIP_INPUT_HEADER')
                 AS (
-                    symbol:chararray, 
-                    name:chararray, 
-                    instrument_type:chararray, 
-                    segment:chararray, 
-                    exchange:chararray, 
-                    data_type: chararray, 
-                    key:chararray,  
-                    from:datetime, 
+                    symbol:chararray,
+                    name:chararray,
+                    instrument_type:chararray,
+                    segment:chararray,
+                    exchange:chararray,
+                    data_type: chararray,
+                    key:chararray,
+                    from:datetime,
                     to:datetime
                 );
 
@@ -48,7 +47,7 @@ filter_left_join =  FILTER join_left BY $0 IS NOT NULL;
 
 -- Aggregate the files with only required fileds
 aggregate_table =   FOREACH filter_left_join GENERATE
-                    exchange, symbol, 
+                    exchange, symbol,
                     date, open, high, low, close, volume, adj_close;
 
 -- Save as an ORC file

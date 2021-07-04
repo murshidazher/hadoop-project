@@ -2,6 +2,26 @@
 
 A list of scripts for stock market analysis
 
+## Downloading Scripts
+
+To simply run the script remotely on terminal:
+
+```sh
+# example
+bash -c "`curl -L https://git.io/hdp-pig-orc`"
+```
+
+### Slugs for Scripts
+
+> The below table contains the slugs for scripts files, which can be used as `https://git.io/<slug_name>`
+
+|            Filename            |        Slug       |                            Description                           |
+|:------------------------------:|:-----------------:|:----------------------------------------------------------------:|
+| NormalizeStocksDatasetORC.pig  | `hdp-pig-orc`     | Contains the script for generating an `ORC` based stock dataset. |
+| NormalizeStocksDatasetText.pig | `hdp-pig-txt`     | Contains the script for generating a `text` based stock dataset. |
+| LoadingStocksORC.pig           | `hdp-hive-db`     | Hive query for `stocks_db` creation.                             |
+| LoadingOptimizedStocksORC.pig  | `hdp-hive-db-opt` | Hive query for `stocks_db` creation with hive optimisations.     |
+
 ## Working with HDFS
 
 Folder structure
