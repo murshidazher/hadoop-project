@@ -65,6 +65,15 @@ hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file
 hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc # orc filesize
 ```
 
+## Run Hive Scripts
+
+```sh
+cd /home/maria_dev/hw-workspace/scripts/hive && \
+rm -rf LoadingStocksORC.sql && \
+nano LoadingStocksORC.sql && \
+hive -f LoadingStocksORC.sql
+```
+
 All the neceddary jar libraries would be loaded to,
 
 ```sh

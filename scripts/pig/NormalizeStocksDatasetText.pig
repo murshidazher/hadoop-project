@@ -39,7 +39,8 @@ master_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/master.c
                 );
 
 -- JOIN stock file
-join_left   =   JOIN stocks BY filename LEFT OUTER, master_data BY key;
+-- Implement a Fragment Replicated join for optimizations
+join_left   =   JOIN stocks BY filename LEFT OUTER, master_data BY key USING 'REPLICATED';
 
 -- Filter out records without a master data
 filter_left_join =  FILTER join_left BY $0 IS NOT NULL;
