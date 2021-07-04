@@ -41,17 +41,14 @@ hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-f
 Remove the folders,
 
 ```sh
-hadoop fs -rm /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text/part-v004-o000-r-00000 && \
-hadoop fs -rm /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text/_SUCCESS && \
-hadoop fs -rmdir /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text && \
-hadoop fs -ls /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
-```
-
-or
-
-```sh
 hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text && \
 hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc
+```
+
+To view a folder,
+
+```sh
+hadoop fs -ls /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
 ```
 
 ```sh
