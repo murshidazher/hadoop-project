@@ -2,7 +2,7 @@ REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
 REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
 
 -- NormalizeStocksDataset to a single dataset with the required columns
-collection_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv/HCLTECH__EQ__NSE__NSE__MINUTE.csv' 
+collection_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv/*' 
                 USING PigStorage(',', '-tagFile') 
                 AS (filepath:chararray, timestamp: chararray, open:float, high:float, low:float, close:float, volume: int);
 
