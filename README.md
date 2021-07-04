@@ -7,20 +7,20 @@ A list of scripts for stock market analysis
 To simply download the updated scripts on terminal:
 
 ```sh
-wget https://git.io/<slug_name>
+curl -L https://git.io/<slug_name> -o <file_name>
 
-# example
-wget https://git.io/hdp-pig-orc.pig
+# examples
+curl -L https://git.io/hdp-pig-orc -o hdp-pig-orc.pig
 ```
 
 ### Slugs for Scripts
 
-> The below table contains the slugs for scripts files, which can be used as `https://git.io/<slug_name>`
+The below table contains the slugs for scripts files, which can be used as `https://git.io/<slug_name>`
 
 |            Filename            |           Slug          |                            Description                           |
 |:------------------------------:|:-----------------------:|:----------------------------------------------------------------:|
-| NormalizeStocksDatasetORC.pig  | `hdp-pig-orc.pig`       | Contains the script for generating an `ORC` based stock dataset. |
-| NormalizeStocksDatasetText.pig | `hdp-pig-txt.pig`       | Contains the script for generating a `text` based stock dataset. |
+| NormalizeStocksDatasetORC.pig  | `hdp-pig-orc`           | Contains the script for generating an `ORC` based stock dataset. |
+| NormalizeStocksDatasetText.pig | `hdp-pig-txt`           | Contains the script for generating a `text` based stock dataset. |
 | LoadingStocksORC.sql           | `hdp-stocks-db.sql`     | Hive query for `stocks_db` creation.                             |
 | LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` | Hive query for `stocks_db` creation with hive optimisations.     |
 
