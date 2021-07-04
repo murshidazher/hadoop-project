@@ -78,8 +78,9 @@ hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-f
 ## Download to Local
 
 ```sh
-> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc
-> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/txt
+> cd /home/maria_dev/hw-workspace/output/pig
+> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc/* ./orc/
+> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text/* ./text/
 ```
 
 ## Size Comparisons
