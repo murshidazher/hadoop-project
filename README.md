@@ -1,6 +1,8 @@
 # hadoop-project
 
-A list of scripts for stock market analysis
+> ⚠️ Under development
+
+A list of scripts for stock market analysis. To test the job runs `http://<ip_address>:8088/cluster`
 
 ## Downloading Scripts
 
