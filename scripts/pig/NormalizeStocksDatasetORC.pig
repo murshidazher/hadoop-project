@@ -1,4 +1,5 @@
 REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
+REGISTER '/usr/hdp/2.6.5.0-292/pig/piggybank.jar';
 
 -- NormalizeStocksDataset to a single dataset with the required columns
 collection_data =   LOAD '/user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv/HCLTECH__EQ__NSE__NSE__MINUTE.csv' 
@@ -49,16 +50,6 @@ aggregate_table =   FOREACH filter_left_join GENERATE
                     exchange, symbol, 
                     date, open, high, low, close, volume, adj_close;
 
-
--- store the dataset as a 
-STORE filter_left_join INTO '/user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text' USING PigStorage(',');
-
--- STORE topTen INTO '/user/maria_dev/hw-workspace/input/warehouse/stock_dataset' USING org.apache.pig.piggybank.storage.HiveColunarStorage(',');
-
--- STORE topTen INTO '/user/maria_dev/hw-workspace/input/hive/' USING org.apache.pig.piggybank.storage.HiveColunarStorage(',');
-
-
-
-
--- <VAR_NAME> = load '/path/to/orc/formatted/file' using OrcStorage(); 
--- store <VAR_NAME> into '/path/to/output/orc/file' using OrcStorage('');
+-- Save as an ORC file
+-- More information can be found [here](http://pig.apache.org/docs/r0.14.0/func.html#OrcStorage)
+STORE aggregate_table INTO '/user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc' USING OrcStorage();
