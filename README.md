@@ -75,6 +75,13 @@ hadoop fs -ls /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-fo
 hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc/part-v003-o000-r-00000
 ```
 
+## Download to Local
+
+```sh
+> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc
+> hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/txt
+```
+
 ## Size Comparisons
 
 ```sh
