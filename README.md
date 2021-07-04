@@ -17,19 +17,22 @@ curl -L https://git.io/hdp-pig-orc -o hdp-pig-orc.pig
 
 The below table contains the slugs for scripts files, which can be used as `https://git.io/<slug_name>`
 
-|            Filename            |           Slug          |                            Description                           |
-|:------------------------------:|:-----------------------:|:----------------------------------------------------------------:|
-| NormalizeStocksDatasetORC.pig  | `hdp-pig-orc`           | Contains the script for generating an `ORC` based stock dataset. |
-| NormalizeStocksDatasetText.pig | `hdp-pig-txt`           | Contains the script for generating a `text` based stock dataset. |
-| LoadingStocksORC.sql           | `hdp-stocks-db.sql`     | Hive query for `stocks_db` creation.                             |
-| LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` | Hive query for `stocks_db` creation with hive optimisations.     |
+|            Filename            |          Slug           |                           Description                            |
+| :----------------------------: | :---------------------: | :--------------------------------------------------------------: |
+| NormalizeStocksDatasetORC.pig  |      `hdp-pig-orc`      | Contains the script for generating an `ORC` based stock dataset. |
+| NormalizeStocksDatasetText.pig |      `hdp-pig-txt`      | Contains the script for generating a `text` based stock dataset. |
+|      LoadingStocksORC.sql      |   `hdp-stocks-db.sql`   |               Hive query for `stocks_db` creation.               |
+| LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` |   Hive query for `stocks_db` creation with hive optimisations.   |
 
 ## Working with HDFS
 
 Folder structure
 
 ```sh
-cd /home/maria_dev/hw-workspace/scripts/pig
+cd /home/maria_dev/hw-workspace/hdp-stocks-scripts && \
+git pull
+
+cd /home/maria_dev/hw-workspace/hdp-stocks-scripts/scripts/pig
 cd /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
 
 hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text/part-v004-o000-r-00000
@@ -52,18 +55,12 @@ hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file
 ```
 
 ```sh
-cd /home/maria_dev/hw-workspace/scripts/pig && \
-rm -rf NormalizeStocksDatasetText.pig && \
-nano NormalizeStocksDatasetText.pig && \
 pig NormalizeStocksDatasetText.pig
 ```
 
 ## ORC file
 
 ```sh
-cd /home/maria_dev/hw-workspace/scripts/pig && \
-rm -rf NormalizeStocksDatasetORC.pig && \
-nano NormalizeStocksDatasetORC.pig && \
 pig NormalizeStocksDatasetORC.pig
 ```
 
