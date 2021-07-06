@@ -26,6 +26,13 @@ The below table contains the slugs for scripts files, which can be used as `http
 |      LoadingStocksORC.sql      |   `hdp-stocks-db.sql`   |               Hive query for `stocks_db` creation.               |
 | LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` |   Hive query for `stocks_db` creation with hive optimisations.   |
 
+
+### Download the Files
+
+- [orc files](https://downgit.github.io/#/home?url=https://github.com/murshidazher/hdp-stocks-scripts/tree/main/warehouse/file-format/orc)
+- [txt files](https://downgit.github.io/#/home?url=https://github.com/murshidazher/hdp-stocks-scripts/tree/main/warehouse/file-format/text)
+
+
 ## Working with HDFS
 
 Folder structure
