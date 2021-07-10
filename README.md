@@ -4,6 +4,8 @@
 
 A list of scripts for stock market analysis. To test the job runs `http://<ip_address>:8088/cluster`
 
+- Has `56918121` ~ fifty-siz million records initially.
+
 ## Downloading Scripts
 
 To simply download the updated scripts on terminal:
@@ -26,16 +28,65 @@ The below table contains the slugs for scripts files, which can be used as `http
 |      LoadingStocksORC.sql      |   `hdp-stocks-db.sql`   |               Hive query for `stocks_db` creation.               |
 | LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` |   Hive query for `stocks_db` creation with hive optimisations.   |
 
-
 ### Download the Files
 
 - [orc files](https://downgit.github.io/#/home?url=https://github.com/murshidazher/hdp-stocks-scripts/tree/main/warehouse/file-format/orc)
 - [txt files](https://downgit.github.io/#/home?url=https://github.com/murshidazher/hdp-stocks-scripts/tree/main/warehouse/file-format/text)
 
-
 ## Working with HDFS
 
-Folder structure
+Create the folder structure in local and in hdfs too using,
+
+```sh
+mkdir -p hw-workspace/input/warehouse/stock_dataset/file-formats/text && \
+mkdir -p hw-workspace/input/warehouse/stock_dataset/file-formats/orc && \
+mkdir -p hw-workspace/input/stocks-dataset
+
+cd hw-workspace && \
+git clone https://github.com/murshidazher/hdp-stocks-scripts.git
+
+# [setup kaggle](https://github.com/Kaggle/kaggle-api)
+cd hw-workspace/input/stock_dataset && \
+kaggle datasets download hk7797/stock-market-india && \
+unzip stock-market-india.zip && \
+mv FullDataCsv/master.csv .
+
+hadoop fs -mkdir -p /user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv && \
+hadoop fs -mkdir -p /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats && \
+hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/FullDataCsv/* hw-workspace/input/stocks-dataset/FullDataCsv/ && \
+hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/master.csv hw-workspace/input/stocks-dataset/
+
+> hdfs dfs -ls hw-workspace/input/stocks-dataset/ # check files
+```
+
+Remove the output folders before script execution,
+
+```sh
+hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text && \
+hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc
+```
+
+Get the latest scripts,
+
+```
+cd /home/maria_dev/hw-workspace/hdp-stocks-scripts && \
+git pull
+```
+
+Execute the pig script
+
+```sh
+> pig ~/hw-workspace/hdp-stocks-scripts/scripts/pig/NormalizeStocksDatasetText.pig
+> pig ~/hw-workspace/hdp-stocks-scripts/scripts/pig/NormalizeStocksDatasetORC.pig
+```
+
+Create Hive table
+
+```sh
+> hive -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.sql
+```
+
+Basic Script Structure
 
 ```sh
 cd /home/maria_dev/hw-workspace/hdp-stocks-scripts && \
@@ -47,30 +98,9 @@ cd /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
 hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text/part-v004-o000-r-00000
 ```
 
-Remove the folders,
-
-```sh
-hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text && \
-hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc
-```
-
-To view a folder,
-
-```sh
-hadoop fs -ls /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
-```
-
-```sh
-pig NormalizeStocksDatasetText.pig
-```
-
-## ORC file
-
-```sh
-pig NormalizeStocksDatasetORC.pig
-```
-
 ## Viewing
+
+To view the processed outputs,
 
 ```sh
 > hadoop fs -ls /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text
@@ -84,6 +114,8 @@ hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-f
 
 ## Download to Local
 
+To download the file to local file system,
+
 ```sh
 > cd /home/maria_dev/hw-workspace/output/pig
 > hadoop fs -copyToLocal /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc/* ./orc/
@@ -92,46 +124,20 @@ hadoop fs -cat /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-f
 
 ## Size Comparisons
 
+To perform size comparions among files,
+
 ```sh
 hadoop fs -du -s -h /user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv # FullDataCsv filesize
 hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/text # text filesize
 hadoop fs -ls -h /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc # orc filesize
 ```
 
-## Run Hive Scripts
-
-```sh
-cd /home/maria_dev/hw-workspace/scripts/hive && \
-rm -rf LoadingStocksORC.sql && \
-nano LoadingStocksORC.sql && \
-hive -f LoadingStocksORC.sql
-```
-
-All the neceddary jar libraries would be loaded to,
-
-```sh
-> cd /usr/lib/external/pig
-> cd /usr/lib/external/hive
-```
-
-Create the folder structure in local and in hdfs too using,
-
-```sh
-> hadoop fs -mkdir hw-workspace/input/stocks-dataset/FullDataCsv
-> hdfs dfs -mv hw-workspace/input/stocks-dataset/FullDataCsv/master.csv hw-workspace/input/stocks-dataset/
-> hdfs dfs -ls
-```
-
-Move the CSV dataset to hadoop,
-
-```sh
-> hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/FullDataCsv/* hw-workspace/input/stocks-dataset/FullDataCsv
-```
-
 kalbi platform
 cmu swing modules to process speech
 
 ### Hadoop commands
+
+For basic hadoop commands,
 
 ```sh
 Usage: hadoop fs -ls [-d] [-h] [-R] [-t] [-S] [-r] [-u] <args>
