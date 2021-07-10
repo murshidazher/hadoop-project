@@ -4,7 +4,7 @@
 
 A list of scripts for stock market analysis. To test the job runs `http://<ip_address>:8088/cluster`
 
-- Has `56918121` ~ `fifty-six` million records initially before pre-processing.
+- Has `56918121` ~ `fifty-six` million records initially before pre-processing, to `152426` after processing.
 
 ## Downloading Scripts
 
