@@ -59,6 +59,26 @@ hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/master.csv hw-works
 > hdfs dfs -ls hw-workspace/input/stocks-dataset/ # check files
 ```
 
+To update the datasets,
+
+```sh
+# delete the old dir and create a new one
+rm -rf hw-workspace/input/stock_dataset && \
+mkdir -p hw-workspace/input/stocks-dataset
+
+# get the newly updated kaggle dataset and arrange it
+cd hw-workspace/input/stock_dataset && \
+kaggle datasets download hk7797/stock-market-india && \
+unzip stock-market-india.zip && \
+mv FullDataCsv/master.csv .
+
+# remove the old dataset in hdfs and update with the new one
+hadoop fs -rm -rf /user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv && \
+hadoop fs -mkdir -p /user/maria_dev/hw-workspace/input/stocks-dataset/FullDataCsv && \
+hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/FullDataCsv/* hw-workspace/input/stocks-dataset/FullDataCsv/ && \
+hadoop fs -copyFromLocal ~/hw-workspace/input/stocks-dataset/master.csv hw-workspace/input/stocks-dataset/
+```
+
 Remove the output folders before script execution,
 
 ```sh
