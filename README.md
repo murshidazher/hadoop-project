@@ -171,3 +171,11 @@ Options:
 -r: Reverse the sort order.
 -u: Use access time rather than modification time for display and sorting.
 ```
+
+Spark Notebooks
+
+```sh
+> ps -ef
+> kill -HUP <PID>
+> bash start_jupyter.sh spark
+```
