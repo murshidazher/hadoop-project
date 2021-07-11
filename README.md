@@ -1,4 +1,4 @@
-# hadoop-project
+# [hdp-stocks-scripts](https://github.com/murshidazher/hdp-stocks-scripts)
 
 > ⚠️ Under development
 
