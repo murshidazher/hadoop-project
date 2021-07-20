@@ -3,8 +3,8 @@
 mkdir -p hw-workspace/input/warehouse/stock_dataset/file-formats &&
   mkdir -p hw-workspace/input/stocks-dataset
 
-cd hw-workspace &&
-  git clone https://github.com/murshidazher/hdp-stocks-scripts.git
+# cd hw-workspace &&
+#   git clone https://github.com/murshidazher/hdp-stocks-scripts.git
 
 hadoop fs -mkdir -p /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats
 
