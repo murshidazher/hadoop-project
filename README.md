@@ -19,7 +19,7 @@ A list of scripts for stock market analysis. To test the job runs `http://<ip_ad
   - [Download to Local](#download-to-local)
   - [Size Comparisons](#size-comparisons)
     - [Hadoop commands](#hadoop-commands)
-  - [LICENSE](#license)
+  - [License](#license)
 
 ## Up & Running
 
@@ -208,6 +208,6 @@ Spark Notebooks
 > bash start_jupyter.sh spark
 ```
 
-## LICENSE
+## License
 
-[CC BY-NC-ND 3.0](./LICENSE) (c) 2021 by Murshid Azher.
+[CC BY-NC-ND 3.0](./LICENSE) © Murshid Azher.
