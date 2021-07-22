@@ -210,4 +210,4 @@ Spark Notebooks
 
 ## LICENSE
 
-[CC BY-NC-ND 3.0.](./LICENSE) (c) 2021 by Murshid Azher.
+[CC BY-NC-ND 3.0](./LICENSE) (c) 2021 by Murshid Azher.
