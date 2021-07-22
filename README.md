@@ -6,6 +6,33 @@ A list of scripts for stock market analysis. To test the job runs `http://<ip_ad
 
 - Has `56918121` ~ `fifty-six` million records initially before pre-processing, to `152426` after processing.
 
+## Table of Contents
+
+- [hdp-stocks-scripts](#hdp-stocks-scripts)
+  - [Table of Contents](#table-of-contents)
+  - [Up & Running](#up--running)
+  - [Downloading Scripts](#downloading-scripts)
+    - [Slugs for Scripts](#slugs-for-scripts)
+    - [Download the Files](#download-the-files)
+  - [Working with HDFS](#working-with-hdfs)
+  - [Viewing](#viewing)
+  - [Download to Local](#download-to-local)
+  - [Size Comparisons](#size-comparisons)
+    - [Hadoop commands](#hadoop-commands)
+
+## Up & Running
+
+> 🚀 Be up and running with pre-processed data
+
+```sh
+> mkdir /user/maria_dev/hw-workspace
+> cd /user/maria_dev/hw-workspace
+> git clone https://github.com/murshidazher/hdp-stocks-scripts.git
+> cd /user/maria_dev/hw-workspace/hdp-stocks-scripts
+> chmod a+x quick_setup.sh
+> sudo bash quick_setup.sh
+```
+
 ## Downloading Scripts
 
 To simply download the updated scripts on terminal:
