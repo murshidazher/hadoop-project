@@ -25,8 +25,8 @@ The below table contains the slugs for scripts files, which can be used as `http
 | :----------------------------: | :---------------------: | :--------------------------------------------------------------: |
 | NormalizeStocksDatasetORC.pig  |      `hdp-pig-orc`      | Contains the script for generating an `ORC` based stock dataset. |
 | NormalizeStocksDatasetText.pig |      `hdp-pig-txt`      | Contains the script for generating a `text` based stock dataset. |
-|      LoadingStocksORC.sql      |   `hdp-stocks-db.sql`   |               Hive query for `stocks_db` creation.               |
-| LoadingOptimizedStocksORC.sql  | `hdp-stocks-db-opt.sql` |   Hive query for `stocks_db` creation with hive optimisations.   |
+|      LoadingStocksORC.hql      |   `hdp-stocks-db.hql`   |               Hive query for `stocks_db` creation.               |
+| LoadingOptimizedStocksORC.hql  | `hdp-stocks-db-opt.hql` |   Hive query for `stocks_db` creation with hive optimisations.   |
 
 ### Download the Files
 
@@ -88,7 +88,7 @@ hadoop fs -rm -r /user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file
 
 Get the latest scripts,
 
-```
+```sh
 cd /home/maria_dev/hw-workspace/hdp-stocks-scripts && \
 git pull
 ```
@@ -103,7 +103,7 @@ Execute the pig script
 Create Hive table
 
 ```sh
-> hive -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.sql
+> hive -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.hql
 ```
 
 Basic Script Structure

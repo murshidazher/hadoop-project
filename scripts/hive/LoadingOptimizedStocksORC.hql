@@ -21,8 +21,8 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS orc -- SerDe as ORC
 LOCATION '/user/maria_dev/hw-workspace/input/warehouse/stock_dataset/file-formats/orc'
 TBLPROPERTIES (
-    'creator'='murshidazher', 
-    'created_on' = '2021-07-05', 
+    'creator'='murshidazher',
+    'created_on' = '2021-07-05',
     'description'='This table contains all stock data from 2017 until 2021.'
 );
 
