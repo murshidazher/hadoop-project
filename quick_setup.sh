@@ -15,5 +15,5 @@ hadoop fs -mkdir -p /user/maria_dev/hw-workspace/input/stocks-dataset/file-forma
 
 hadoop fs -copyFromLocal ~/hw-workspace/hdp-stocks-scripts/warehouse/file-format/orc/* /user/maria_dev/hw-workspace/input/stocks-dataset/file-formats/orc/
 
-# beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000/ -n maria_dev -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.hql
-hive -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.hql
+beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000/ -n maria_dev -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.hql
+# hive -f ~/hw-workspace/hdp-stocks-scripts/scripts/hive/LoadingStocksORC.hql
