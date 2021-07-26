@@ -2,6 +2,7 @@
 
 sudo su -
 
+# create the fs directory
 mkdir /user/maria_dev/hw-workspace
 
 cd /user/maria_dev/hw-workspace &&
